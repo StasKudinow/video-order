@@ -32,7 +32,7 @@ export const SuccessPage = () => {
             className={[
               'inline-flex items-center justify-center rounded-xl px-6 py-3',
               'text-sm font-semibold text-white',
-              'bg-gradient-to-b from-orange-600 to-orange-900',
+              'bg-linear-to-b from-orange-600 to-orange-900',
               'shadow-lg shadow-orange-950/30',
               'transition will-change-transform',
               'hover:brightness-110 active:brightness-95',
@@ -50,4 +50,3 @@ export const SuccessPage = () => {
     </main>
   )
 }
-

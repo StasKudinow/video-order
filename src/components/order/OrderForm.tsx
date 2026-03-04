@@ -94,9 +94,11 @@ export const OrderForm = () => {
           ].join(' '),
           canProceed
             ? [
-                'bg-gradient-to-b from-orange-600 to-orange-900 text-white',
+                'bg-linear-to-b from-orange-600 to-orange-900 text-white',
                 'shadow-lg shadow-orange-950/30',
-                'hover:brightness-110 active:brightness-95',
+                'transition will-change-transform',
+                'hover:cursor-pointer hover:brightness-110 active:brightness-95',
+                'hover:scale-[1.02] active:scale-[0.99]',
               ].join(' ')
             : 'cursor-not-allowed bg-white/20 text-white/50',
         ].join(' ')}
@@ -112,4 +114,3 @@ export const OrderForm = () => {
     </form>
   )
 }
-

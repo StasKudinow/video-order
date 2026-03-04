@@ -9,7 +9,7 @@ const getPaymentUrlFromEnv = () => {
 
 export const createPaymentRedirectUrl = ({ email }: CreatePaymentRedirectUrlParams) => {
   const paymentUrl = getPaymentUrlFromEnv()
-  if (!paymentUrl) return `/success?email=${encodeURIComponent(email)}`
+  if (!paymentUrl) return `/video-order/success?email=${encodeURIComponent(email)}`
 
   const url = new URL(paymentUrl, window.location.origin)
   url.searchParams.set('email', email)
@@ -20,4 +20,3 @@ export const redirectToPayment = ({ email }: CreatePaymentRedirectUrlParams) => 
   const url = createPaymentRedirectUrl({ email })
   window.location.assign(url)
 }
-

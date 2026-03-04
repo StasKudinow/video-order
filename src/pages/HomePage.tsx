@@ -32,10 +32,10 @@ export const HomePage = () => {
           className={[
             'inline-flex items-center justify-center rounded-xl px-6 py-3',
             'text-sm font-semibold text-white',
-            'bg-gradient-to-b from-orange-600 to-orange-900',
+            'bg-linear-to-b from-orange-600 to-orange-900',
             'shadow-lg shadow-orange-950/30',
             'transition will-change-transform',
-            'hover:brightness-110 active:brightness-95',
+            'hover:cursor-pointer hover:brightness-110 active:brightness-95',
             'hover:scale-[1.02] active:scale-[0.99]',
             'focus:outline-none focus-visible:ring-2 focus-visible:ring-white',
             'focus-visible:ring-offset-2 focus-visible:ring-offset-black',
@@ -43,10 +43,9 @@ export const HomePage = () => {
           to="/order"
           aria-label="Перейти к оформления заказа"
         >
-          Перейти к оформления заказа
+          Перейти к оформлению заказа
         </Link>
       </div>
     </main>
   )
 }
-

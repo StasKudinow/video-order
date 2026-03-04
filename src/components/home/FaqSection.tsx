@@ -57,6 +57,8 @@ export const FaqSection = () => {
                   'text-sm font-medium text-white',
                   'focus:outline-none focus-visible:ring-2 focus-visible:ring-white',
                   'focus-visible:ring-offset-2 focus-visible:ring-offset-black',
+                  'hover:cursor-pointer hover:text-white/80',
+                  'transition will-change-transform',
                 ].join(' ')}
                 onClick={() => handleToggle(item.id)}
                 aria-expanded={isOpen}
@@ -84,4 +86,3 @@ export const FaqSection = () => {
     </section>
   )
 }
-
