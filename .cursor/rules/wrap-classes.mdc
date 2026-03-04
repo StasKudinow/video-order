@@ -1,0 +1,14 @@
+---
+alwaysApply: true
+---
+
+wrap large tailwind class strings across multiple lines and keep them no longer than 100 characters per line
+example:
+
+className={[
+            '...',
+            '...',
+            '...',
+            '...',
+            '...',
+          ].join(' ')}
