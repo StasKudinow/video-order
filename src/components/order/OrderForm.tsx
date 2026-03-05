@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import type { FormEvent } from 'react'
+import type { SubmitEvent } from 'react'
 import { redirectToPayment } from '../../api/payment'
 import { SERVICE_PRICE_LABEL } from '../../constants/service'
 
@@ -16,7 +16,7 @@ export const OrderForm = () => {
 
   const showEmailError = isTouched && email.trim().length > 0 && !isEmailValid(email)
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault()
     setIsTouched(true)
     if (!canProceed) return
@@ -87,7 +87,7 @@ export const OrderForm = () => {
         type="submit"
         className={[
           [
-            'inline-flex w-full items-center justify-center rounded-xl px-5 py-3',
+            'inline-flex w-full items-center justify-center rounded-xl px-6 py-3',
             'text-sm font-medium',
             'focus:outline-none focus-visible:ring-2 focus-visible:ring-white',
             'focus-visible:ring-offset-2 focus-visible:ring-offset-black',
@@ -97,8 +97,7 @@ export const OrderForm = () => {
                 'bg-linear-to-b from-orange-600 to-orange-900 text-white',
                 'shadow-lg shadow-orange-950/30',
                 'transition will-change-transform',
-                'hover:cursor-pointer hover:brightness-110 active:brightness-95',
-                'hover:scale-[1.02] active:scale-[0.99]',
+                'hover:cursor-pointer hover:brightness-110 hover:scale-[1.02]',
               ].join(' ')
             : 'cursor-not-allowed bg-white/20 text-white/50',
         ].join(' ')}

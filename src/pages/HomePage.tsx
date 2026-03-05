@@ -31,12 +31,11 @@ export const HomePage = () => {
         <Link
           className={[
             'inline-flex items-center justify-center rounded-xl px-6 py-3',
-            'text-sm font-semibold text-white',
+            'text-sm font-medium text-white',
             'bg-linear-to-b from-orange-600 to-orange-900',
             'shadow-lg shadow-orange-950/30',
             'transition will-change-transform',
-            'hover:cursor-pointer hover:brightness-110 active:brightness-95',
-            'hover:scale-[1.02] active:scale-[0.99]',
+            'hover:cursor-pointer hover:brightness-110 hover:scale-[1.02]',
             'focus:outline-none focus-visible:ring-2 focus-visible:ring-white',
             'focus-visible:ring-offset-2 focus-visible:ring-offset-black',
           ].join(' ')}

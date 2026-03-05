@@ -6,7 +6,10 @@ export const OrderPage = () => {
     <main className="flex-1">
       <div className="flex flex-col gap-2">
         <Link
-          className="text-sm text-white/80 underline underline-offset-4 hover:text-white"
+          className={[
+            'text-sm text-white/80 w-max underline underline-offset-4',
+            'hover:text-orange-600/80 transition',
+          ].join(' ')}
           to="/"
           aria-label="Вернуться на главную"
         >

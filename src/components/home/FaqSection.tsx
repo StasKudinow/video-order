@@ -1,5 +1,3 @@
-import { useId, useState } from 'react'
-
 type FaqItem = {
   id: string
   question: string
@@ -30,58 +28,34 @@ const FAQ_ITEMS: FaqItem[] = [
 ]
 
 export const FaqSection = () => {
-  const sectionId = useId()
-  const [openItemId, setOpenItemId] = useState<string | null>(FAQ_ITEMS[0]?.id ?? null)
-
-  const handleToggle = (id: string) => {
-    setOpenItemId((prev) => (prev === id ? null : id))
-  }
-
   return (
     <section className="w-full text-left">
-      <h2 className="text-base font-semibold tracking-tight text-white">FAQ</h2>
+      <h2 className="text-base font-semibold tracking-tight text-white">
+        FAQ
+      </h2>
 
       <div className="mt-4 divide-y divide-white/15">
-        {FAQ_ITEMS.map((item) => {
-          const isOpen = openItemId === item.id
-          const buttonId = `${sectionId}-${item.id}-button`
-          const panelId = `${sectionId}-${item.id}-panel`
+        {FAQ_ITEMS.map((item) => (
+          <details key={item.id} className="group py-4">
+            <summary
+              className={[
+                'flex cursor-pointer list-none items-center justify-between gap-4',
+                'text-sm font-medium text-white',
+                'hover:text-orange-600/80 transition',
+                'group-open:text-orange-600/80',
+              ].join(' ')}
+            >
+              <span className="">{item.question}</span>
 
-          return (
-            <div key={item.id}>
-              <button
-                id={buttonId}
-                type="button"
-                className={[
-                  'flex w-full items-center justify-between gap-4 py-4 text-left',
-                  'text-sm font-medium text-white',
-                  'focus:outline-none focus-visible:ring-2 focus-visible:ring-white',
-                  'focus-visible:ring-offset-2 focus-visible:ring-offset-black',
-                  'hover:cursor-pointer hover:text-white/80',
-                  'transition will-change-transform',
-                ].join(' ')}
-                onClick={() => handleToggle(item.id)}
-                aria-expanded={isOpen}
-                aria-controls={panelId}
-              >
-                <span>{item.question}</span>
+              <span className="text-white/60 group-open:hidden">+</span>
+              <span className="text-white/60 hidden group-open:block">−</span>
+            </summary>
 
-                <span className="text-white/60" aria-hidden="true">
-                  {isOpen ? '-' : '+'}
-                </span>
-              </button>
-
-              <div
-                id={panelId}
-                role="region"
-                aria-labelledby={buttonId}
-                className={isOpen ? 'pb-4 text-sm text-white/80' : 'hidden'}
-              >
-                {item.answer}
-              </div>
+            <div className="pt-3 text-sm text-white/80">
+              {item.answer}
             </div>
-          )
-        })}
+          </details>
+        ))}
       </div>
     </section>
   )
