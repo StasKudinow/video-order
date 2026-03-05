@@ -1,17 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-const getServiceVideo = () => {
-  const src = import.meta.env.VITE_SERVICE_VIDEO_URL as string | undefined
-  const poster = import.meta.env.VITE_SERVICE_VIDEO_POSTER_URL as string | undefined
-
-  return {
-    src: src?.trim() || undefined,
-    poster: poster?.trim() || undefined,
-  }
+interface ServiceVideoSectionProps {
+  video?: { src?: string; poster?: string }
+  error?: string | null
 }
 
-export const ServiceVideoSection = () => {
-  const { src, poster } = useMemo(() => getServiceVideo(), [])
+export const ServiceVideoSection = ({ video, error }: ServiceVideoSectionProps) => {
   const rootRef = useRef<HTMLDivElement | null>(null)
   const [shouldLoad, setShouldLoad] = useState(false)
 
@@ -39,14 +33,23 @@ export const ServiceVideoSection = () => {
   return (
     <section className="w-full">
       <div ref={rootRef} className="mt-4">
-        {shouldLoad && src ? (
+        {error ? (
+          <div
+            className={[
+              'flex aspect-video w-full items-center justify-center rounded-xl',
+              'bg-white/10 text-sm text-white/70 ring-1 ring-white/15',
+            ].join(' ')}
+          >
+            {error}
+          </div>
+        ) : shouldLoad && video?.src ? (
           <video
             className="aspect-video w-full rounded-xl bg-black"
             controls
             preload="none"
-            poster={poster}
+            poster={video?.poster}
           >
-            <source src={src} />
+            <source src={video?.src} type="video/mp4" />
             Ваш браузер не поддерживает видео.
           </video>
         ) : (
@@ -56,7 +59,7 @@ export const ServiceVideoSection = () => {
               'bg-white/10 text-sm text-white/70 ring-1 ring-white/15',
             ].join(' ')}
           >
-            Видео будет здесь
+            Видео недоступно
           </div>
         )}
       </div>

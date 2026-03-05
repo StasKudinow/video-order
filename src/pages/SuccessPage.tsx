@@ -16,11 +16,11 @@ export const SuccessPage = () => {
         'rounded-2xl border border-white/15 bg-black/30 p-6 sm:p-10',
         'flex flex-col items-center gap-8',
       ].join(' ')}>
-        <h1 className="text-3xl font-semibold tracking-tight text-white">
+        <h1 className="text-3xl text-center font-semibold tracking-tight text-white">
           Оплата прошла успешно
         </h1>
 
-        <p className="text-sm text-white/80">
+        <p className="text-sm text-center text-white/80">
           Заказ получен. Мы свяжемся с вами по email.
         </p>
 
@@ -48,7 +48,6 @@ export const SuccessPage = () => {
             На главную
           </Link>
         </div>
-        
       </div>
     </main>
   )

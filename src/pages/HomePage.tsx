@@ -1,15 +1,34 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { getServiceVideo } from '../api/getServiceVideo'
+import { mapServiceVideo } from '../helpers/mapServiceVideo'
+
 import { ServiceVideoSection } from '../components/home/ServiceVideoSection'
 import { FaqSection } from '../components/home/FaqSection'
-import { SERVICE_TITLE } from '../constants/service'
 
 export const HomePage = () => {
+  const [video, setVideo] = useState<{ src?: string; poster?: string }>()
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const controller = new AbortController()
+
+    getServiceVideo()
+      .then((data) => {
+        if (controller.signal.aborted) return
+        setVideo(mapServiceVideo(data))
+      })
+      .catch(() => setError('Не удалось загрузить видео'))
+
+    return () => controller.abort()
+  }, [])
+
   return (
     <main className="flex-1">
       <div className="mx-auto flex w-full max-w-2xl flex-col items-center gap-10 text-center">
         <header className="space-y-10">
           <h1 className="text-balance text-3xl font-semibold tracking-tight text-white sm:text-5xl">
-            {SERVICE_TITLE}
+            Обзор на ваше видео от Макса +100500
           </h1>
 
           <p className="text-pretty text-base text-white/85 sm:text-lg">
@@ -24,7 +43,10 @@ export const HomePage = () => {
           </p>
         </header>
 
-        <ServiceVideoSection />
+        <ServiceVideoSection
+          video={video}
+          error={error}
+        />
 
         <FaqSection />
 

@@ -1,31 +1,4 @@
-type FaqItem = {
-  id: string
-  question: string
-  answer: string
-}
-
-const FAQ_ITEMS: FaqItem[] = [
-  {
-    id: 'delivery',
-    question: 'Сколько времени занимает разбор?',
-    answer: 'В среднем 3–7 дней. Точные сроки зависят от загрузки и длины видео.',
-  },
-  {
-    id: 'format',
-    question: 'В каком формате я получу разбор?',
-    answer: 'Это будет личное видео с комментариями и конкретными правками.',
-  },
-  {
-    id: 'refunds',
-    question: 'Есть ли возвраты?',
-    answer: 'Условия возврата будут прописаны в оферте. В MVP это заглушка, потом уточним.',
-  },
-  {
-    id: 'contact',
-    question: 'Как вы со мной свяжетесь?',
-    answer: 'После оплаты мы используем email, который вы укажете при оформлении.',
-  },
-]
+import { FAQ_ITEMS } from '../../constants/faq'
 
 export const FaqSection = () => {
   return (
